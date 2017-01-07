@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <script src="../scripts/vendors/angular.min.js" charset="utf-8"></script>
+        <script src="../scripts/client.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="../css/master.css" media="screen" title="no title">
+        <meta charset="utf-8">
+        <title>Assignment Tracker</title>
+    </head>
+
+    <body ng-app='myApp'>
+        <div ng-controller="LaunchpadController">
+            <input type="text" ng-model='assignmentName' placeholder="Assignment Name">
+            <input type="text" ng-model='studentName' placeholder="Student Name">
+            <input type="number" ng-model='score' placeholder="Score">
+            <input type="text" ng-model='dateTurnedIn' placeholder="Date Turned In">
+            <button type="button" name="submit" ng-click='postData()'>Submit</button>
+
+        </div>
+    </body>
+
+</html>
