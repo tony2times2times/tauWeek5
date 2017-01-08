@@ -4,18 +4,47 @@
     <head>
         <script src="../scripts/vendors/angular.min.js" charset="utf-8"></script>
         <script src="../scripts/client.js" charset="utf-8"></script>
-        <link rel="stylesheet" href="../css/master.css" media="screen" title="no title">
+        <link rel="stylesheet" href = "../css/vendors/bootstrap.min.css" media="screen"></link>
+        <link rel="stylesheet" href="../css/master.css" media="screen">
         <meta charset="utf-8">
-        <title>Assignment Tracker</title>
+        <title>Pet Project</title>
     </head>
 
     <body ng-app='myApp'>
-        <div ng-controller="LaunchpadController">
-            <input type="text" ng-model='name' placeholder="Name">
-            <input type="text" ng-model='animal' placeholder="Animal Type">
-            <input type="number" ng-model='age' placeholder="Age">
-            <input type="text" ng-model='image' placeholder="Image URL">
-            <button type="button" name="submit" ng-click='postData()'>Submit</button>
+        <div class= "container-fluid" ng-controller="LaunchpadController">
+          <div class="">
+          <div class="form-group ">
+            Name:
+            <br>
+            <input type="text" ng-model='name' placeholder="Appa">
+          </div>
+          <div class="form-group">
+            Animal Type:
+            <br>
+            <input type="text" ng-model='animal' placeholder="Flying Bison">
+          </div>
+          <div class="form-group">
+            Age:
+            <br>
+            <input type="number" ng-model='age' placeholder="108">
+          </div>
+          <div class="form-group">
+            Image URL:
+            <br>
+            <input type="text" ng-model='image' placeholder="image.com/YIPYIP">
+          </div>
+            <button class"btn-outline-primary" type="button" name="submit" ng-click='postData()'>Submit</button>
+  </div>
+            <button class= "form-control display-pet" id ="pet.index" ng-click='changeClass(pet.index)' ng-repeat='pet in pets'>
+              <div class="info">
+                Name : {{pet.name}}
+                <br>
+                Animal : {{pet.animal}}
+                <br>
+                Age : {{pet.age}}
+              </div>
+                <img ng-class="view" ng-src="{{pet.image}}" alt="pet picture" />
+            </button>
 
         </div>
     </body>

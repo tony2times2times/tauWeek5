@@ -1,3 +1,32 @@
 body{
-  color: red;
+  background: silver;
+}
+
+.pet-box{
+  display: inline-block;
+}
+
+.display-pet{
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  margin: 20px;
+  background: white;
+}
+
+.small-pic{
+  height: 100px;
+}
+
+.large-pic{
+  height: 200px;
+}
+
+.form-group{
+  display: inline-block;
+}
+
+.display-pet{
+
 }
