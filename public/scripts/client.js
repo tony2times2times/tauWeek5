@@ -4,36 +4,28 @@ myApp.controller('LaunchpadController', ['$scope', '$http', function($scope, $ht
     console.log('NG Loaded');
     //$scope.assignments = [];
 
-    $scope.getData = function() {
+    $scope.getData   = function() {
         console.log('getting data from server');
-        //pull id off DOM!!!
-      var assignmentId = '';
-      var getUrl;
-      if (assignmentId !== '') {
-        getUrl = '/score/' + assignmentId;
-      }else{
-        getUrl = '/score';
-      }
         $http({
             method: 'GET',
-            url: getUrl
+            url: '/getPets'
         }).then(function(response) {
             console.log('Response from server: ', response);
-            $scope.assignments = response.data;
+            //$scope.assignments = response.data;
         });
     };
 
     $scope.postData = function() {
         console.log('posting data');
         var data = {
-            assignmentName: $scope.assignmentName,
-            studentName: $scope.studentName,
-            score: $scope.score,
-            dateTurnedIn: $scope.dateTurnedIn
+            name: $scope.name,
+            animal: $scope.animal,
+            age: $scope.age,
+            image: $scope.image
         };
         $http({
             method: 'post',
-            url: '/score',
+            url: '/postPet',
             data: data
         }).then(function(response) {
             console.log('Response from server: ', response);
@@ -42,8 +34,8 @@ myApp.controller('LaunchpadController', ['$scope', '$http', function($scope, $ht
     };
 
     $scope.del = function(id) {
-      console.log('deleting: ' +id);
-      //not working to be updated
+        console.log('deleting: ' + id);
+        //not working to be updated
     };
-
+    $scope.getData();
 }]);

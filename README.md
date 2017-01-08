@@ -6,11 +6,14 @@ In this challenge, you will be creating a Pet Application that allows a user to 
 You will need the following:
 
 [] At the top of the page should be a greeting with some direction on how to use the application,
+
 [] Next, should be a inputs where the user can add a new pet with a form,
+
 [] Below all of that should be a list of the entered pets.
+
 [] You will use the full MEAN stack for this (Mongo, Express, Angular, Node)
 
-Each Pet will need to have the following information:
+[X]Each Pet will need to have the following information:
 
 Name (example, Grilled Cheese)
 Animal (example, Cat),
