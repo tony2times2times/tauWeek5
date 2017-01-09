@@ -7,21 +7,27 @@ myApp.controller('LaunchpadController', ['$scope', '$http', function($scope, $ht
     $scope.pets = [];
     //this view thing is something i was trying to change the appearence of outline
     //search result... it didnt go to plan more research needs to be done.
-    $scope.view = "small-pic";
     //toggle info view and picture view... it does NOT WORK!
     $scope.changeClass = function(index) {
-        console.log('Changing pet view for: ' + index );
-        if ($scope.view === "small-pic")
-            $scope.view = "large-pic";
-        else
-            $scope.info.hide();
-            $scope.view = "small-pic";
+        console.log('Changing pet view for: ' + index);
+        if ($scope.pets[index].imageView === "small-pic") {
+            $scope.pets[index].imageView = "large-pic";
+            $scope.pets[index].info = false;
+        } else {
+            $scope.pets[index].imageView = "small-pic";
+            $scope.pets[index].info = true;
+        }
     };
     //NG repeate creates a new scope making it difuclt to access a  index
     //this was my attempt at solving that but im not sure how or if i will use it.
-    $scope.createIndex = function() {
+    $scope.createInfo = function() {
         for (var i = 0; i < $scope.pets.length; i++) {
+            //add index property to each pet
             $scope.pets[i].index = i;
+            //add display property to each pet
+            $scope.pets[i].imageView = 'large-pic';
+            $scope.pets[i].info = false;
+
         }
     };
 
@@ -37,7 +43,7 @@ myApp.controller('LaunchpadController', ['$scope', '$http', function($scope, $ht
             //set response equal to pets array
             $scope.pets = response.data;
             console.log("there are the pets" + $scope.pets[0].name);
-            $scope.createIndex();
+            $scope.createInfo();
         });
     };
 
