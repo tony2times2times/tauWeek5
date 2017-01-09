@@ -20,12 +20,9 @@ myApp.controller('LaunchpadController', ['$scope', '$http', function($scope, $ht
             $scope.pets[index].info = true;
         }
     };
-    //NG repeate creates a new scope making it difuclt to access a  index
-    //this was my attempt at solving that.
+    //adds info and view properties to each object allowing them to be changed
     $scope.createInfo = function() {
         for (var i = 0; i < $scope.pets.length; i++) {
-            //add index property to each pet
-            $scope.pets[i].index = i;
             //add display property to each pet
             $scope.pets[i].imageView = 'large-pic';
             //add boolean info property to each pet
