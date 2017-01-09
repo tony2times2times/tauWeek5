@@ -1,7 +1,9 @@
+/*html ellements*/
 body{
   background: silver;
 }
 
+/*search results*/
 .pet-box{
   display: inline-block;
 }
@@ -23,10 +25,7 @@ body{
   height: 200px;
 }
 
+/*user input */
 .form-group{
   display: inline-block;
-}
-
-.display-pet{
-
 }
