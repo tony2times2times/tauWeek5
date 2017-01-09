@@ -83,16 +83,12 @@ myApp.controller('LaunchpadController', ['$scope', '$http', function($scope, $ht
 
     $scope.del = function(id) {
         console.log('deleting: ' + id);
-        var data = {
-            id: id
-        };
         $http({
             method: 'DELETE',
-            url: '/deletePet',
-            data: data
+            url: ('/deletePet/' + id),
         }).then(function(response) {
-            console.log('Response from server: ', response);
-            //after a pet has been added to the database get a current list of all pets
+            console.log('delete from server: ', response);
+            //after a pet has been removed from the database get a current list of all pets
             $scope.getData();
         });
     };

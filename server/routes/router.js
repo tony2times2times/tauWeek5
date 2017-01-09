@@ -27,7 +27,7 @@ router.get('/getPets/', function(req, res) {
                 console.log(err);
                 res.sendStatus(500);
             } else {
-                console.log('users: ' + userResults);
+                //console.log('users: ' + userResults);
                 res.send(userResults);
             }
         });
@@ -47,21 +47,23 @@ router.post('/postPet', function(req, res) {
     newPet.save(function(err) {
         if (err) {
             console.log("erorr: " + err);
+            res.sendStatus(500);
         } else {
             console.log("New pet posted.");
-            res.sendStatus(201);
+            res.sendStatus(200);
         }
     });
 });
 
-router.delete('/deletePet', function(req, res) {
+router.delete('/deletePet/:id', function(req, res) {
     console.log('deleting pet from DB!!!');
-    Pet.findByIdAndRemove(req.body.id,function(err) {
+    Pet.findByIdAndRemove(req.params.id,function(err) {
         if (err) {
             console.log("erorr: " + err);
+            res.send(req.body);
         } else {
             console.log("Pet has been euthanized");
-            res.sendStatus(201);
+            res.send(req.body);
         }
     });
 });
