@@ -36,16 +36,20 @@
           </div>
             <button class"btn-outline-primary" type="button" name="submit" ng-click='postData()'>Submit</button>
   </div>
-            <button class= "form-control display-pet" ng-click='changeClass($index)' ng-repeat='pet in pets'>
+            <div class= "form-control display-pet" ng-repeat='pet in pets'>
+            <button class='pet-button' ng-click='changeClass($index)' >
               <div class="info" ng-show='pet.info'>
                 Name : {{pet.name}}
                 <br>
                 Animal : {{pet.animal}}
                 <br>
                 Age : {{pet.age}}
+                <br>
               </div>
                 <img ng-class="pet.imageView" ng-src="{{pet.image}}" alt="pet picture" />
             </button>
+            <button class='btn-danger btn-del' type="button" ng-click='del(pet._id)' ng-show='pet.info' > delete</button>
+          </div>
 
         </div>
     </body>

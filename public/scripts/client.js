@@ -16,10 +16,17 @@ myApp.controller('LaunchpadController', ['$scope', '$http', function($scope, $ht
         }
         //else the image is large, change it to small and show info
         else {
+            //reset all images to the defualt display
+            for (var i = 0; i < $scope.pets.length; i++) {
+                $scope.pets[i].imageView = 'large-pic';
+                $scope.pets[i].info = false;
+            }
+            //change display settings only for clicked image
             $scope.pets[index].imageView = "small-pic";
             $scope.pets[index].info = true;
         }
     };
+
     //adds info and view properties to each object allowing them to be changed
     $scope.createInfo = function() {
         for (var i = 0; i < $scope.pets.length; i++) {
@@ -76,7 +83,18 @@ myApp.controller('LaunchpadController', ['$scope', '$http', function($scope, $ht
 
     $scope.del = function(id) {
         console.log('deleting: ' + id);
-        //not working to be updated
+        var data = {
+            id: id
+        };
+        $http({
+            method: 'DELETE',
+            url: '/deletePet',
+            data: data
+        }).then(function(response) {
+            console.log('Response from server: ', response);
+            //after a pet has been added to the database get a current list of all pets
+            $scope.getData();
+        });
     };
     $scope.getData();
 }]);

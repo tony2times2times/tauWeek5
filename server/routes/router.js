@@ -21,8 +21,7 @@ router.get('/', function(req, res) {
 
 //handles get requests from clients and submits them to mongoDB
 router.get('/getPets/', function(req, res) {
-        console.log('looking for id' + req.params.id);
-
+        console.log('getting pets');
         Pet.find({}, function(err, userResults) {
             if (err) {
                 console.log(err);
@@ -54,6 +53,19 @@ router.post('/postPet', function(req, res) {
         }
     });
 });
+
+router.delete('/deletePet', function(req, res) {
+    console.log('deleting pet from DB!!!');
+    Pet.findByIdAndRemove(req.body.id,function(err) {
+        if (err) {
+            console.log("erorr: " + err);
+        } else {
+            console.log("Pet has been euthanized");
+            res.sendStatus(201);
+        }
+    });
+});
+
 
 //makes router availble to server.js
 module.exports = router;
